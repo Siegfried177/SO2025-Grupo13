@@ -1,4 +1,5 @@
 # SO2025-Grupo13
+Alumno: Yamil Yaluk
 Repositorio para los TP 1 y 2 de SO 2025
 
 # TP 1 -- LFS
