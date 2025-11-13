@@ -6,7 +6,7 @@ for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__):
     var.commands_dict[module_name] = module.run
 
 while True:
-    cmd_input = input(f"{var.current_user} {var.current_dir}\n$ ")
+    cmd_input = input(f"{var.current_user} {var.current_dir}> $ ")
     cmd_parsed = parser.parse_command(cmd_input)
     
     if not cmd_parsed: continue # Si no se escribió nada, continuar el loop
