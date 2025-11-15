@@ -1,8 +1,15 @@
 import os 
 
-def run(args):
+"""
+- ls: Lista archivos y directorios
+- args: [-a] [directorio]
+        [directorio]
+-- Si no hay argumentos lista el directorio actual
+-- Muestra archivos ocultos si se usa -a
+"""
+def run(args : list[str]) -> None:
     if len(args) > 2:  # Demasiados argumentos
-        print("Demasiados argumentos para 'ls'")
+        print("Error: Demasiados argumentos para 'ls'")
         return
     
     if len(args) == 0:
@@ -21,9 +28,9 @@ def run(args):
                 for item in list_dir:
                     print(item)
             except FileNotFoundError:
-                print(f"No existe el directorio '{args[1]}'")
+                print(f"Error: No existe el directorio '{args[1]}'")
         else:
-            print(f"Argumento/s no reconocido/s para 'ls'")
+            print(f"Error: Argumento/s no reconocido/s para 'ls'")
     
     elif len(args) == 1:
         if hidden_items:
@@ -32,7 +39,7 @@ def run(args):
                 for item in list_dir:
                     print(item)
             except FileNotFoundError:
-                print(f"No existe el directorio '{args[0]}'")
+                print(f"Error: No existe el directorio '{args[0]}'")
         else:
             list_dir = os.listdir(args[0])
             list_dir = [item for item in list_dir if not item.startswith('.')]
@@ -40,4 +47,4 @@ def run(args):
                 for item in list_dir:
                     print(item)
             except FileNotFoundError:
-                print(f"No existe el directorio '{args[0]}'")
+                print(f"Error: No existe el directorio '{args[0]}'")

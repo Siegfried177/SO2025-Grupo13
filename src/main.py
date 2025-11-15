@@ -1,7 +1,8 @@
 import importlib, pkgutil, commands
 from utils import var, parser
 
-for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__):
+# Iterar sobre todos los módulos en el paquete commands, añadir cada comando al diccionario con su función lista para ejecutarse
+for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__): 
     module : object = importlib.import_module(f"commands.{module_name}")
     var.commands_dict[module_name] = module.run
 
