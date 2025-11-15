@@ -5,7 +5,7 @@ import os
 - args: <archivo>
 -- No elimina carpetas ni múltiples archivos
 """
-def run(args):
+def run(args : list[str]) -> None:
     if len(args) != 1:
         print("Error: Debe haber exactamente un argumento")
         return
