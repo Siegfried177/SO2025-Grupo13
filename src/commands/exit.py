@@ -1,11 +1,12 @@
-import os 
+import sys
 
 """
-- ls: Lista archivos y directorios
-- args: [-a] [directorio]
-        [directorio]
--- Si no hay argumentos lista el directorio actual
--- Muestra archivos ocultos si se usa -a
+- exit: Termina la ejecución de la Shell
+- args: Ninguno
 """
 def run(args : list[str]) -> None:
-    pass
+    if len(args) > 0:  # Si se pasan argumentos
+        print("Error: El comando 'exit' no acepta argumentos")
+        return
+    
+    sys.exit()
