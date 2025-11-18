@@ -1,4 +1,5 @@
 import os 
+from utils.log_gen import make_log
 
 """
 - ls: Lista archivos y directorios
@@ -10,6 +11,7 @@ import os
 def run(args : list[str]) -> None:
     if len(args) > 2:  # Demasiados argumentos
         print("Error: Demasiados argumentos para 'ls'")
+        make_log("ls", success=False, details="Demasiados argumentos para 'ls'")
         return
     
     if len(args) == 0:
@@ -17,6 +19,7 @@ def run(args : list[str]) -> None:
         list_dir = [item for item in list_dir if not item.startswith('.')]
         for item in list_dir:
             print(item)
+        make_log("ls")
         return
     
     hidden_items : bool = True if args[0] == "-a" else False
@@ -27,10 +30,15 @@ def run(args : list[str]) -> None:
             try:
                 for item in list_dir:
                     print(item)
+                make_log("ls")
             except FileNotFoundError:
                 print(f"Error: No existe el directorio '{args[1]}'")
+                make_log("ls", success=False, details=f"No existe el directorio '{args[1]}'")
+                return
         else:
             print(f"Error: Argumento/s no reconocido/s para 'ls'")
+            make_log("ls", success=False, details="Argumento/s no reconocido/s para 'ls'")
+            return
     
     elif len(args) == 1:
         if hidden_items:
@@ -38,13 +46,18 @@ def run(args : list[str]) -> None:
             try:
                 for item in list_dir:
                     print(item)
+                make_log("ls")
             except FileNotFoundError:
                 print(f"Error: No existe el directorio '{args[0]}'")
+                make_log("ls", success=False, details=f" No existe el directorio '{args[0]}'")
         else:
             list_dir = os.listdir(args[0])
             list_dir = [item for item in list_dir if not item.startswith('.')]
             try:
                 for item in list_dir:
                     print(item)
+                make_log("ls")
             except FileNotFoundError:
                 print(f"Error: No existe el directorio '{args[0]}'")
+                make_log("ls", success=False, details=f"No existe el directorio '{args[0]}'")
+                return

@@ -15,6 +15,8 @@ while True:
     cmd_name = cmd_parsed[0]
     cmd_args = cmd_parsed[1:]
     
-    if cmd_name in var.commands_dict:
+    if cmd_name in var.commands_dict: # Si el comando es correcto se ejecuta
         var.commands_dict[cmd_name](cmd_args)
-    else: print(f"No existe el comando '{cmd_name}'")
+    else: 
+        print(f"Error: No existe el comando '{cmd_name}'")
+        var.make_log(cmd_name, success=False, details="No existe el comando indicado")
