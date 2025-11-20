@@ -20,9 +20,9 @@ def make_log(command, success=True, details=""):
     log_file = ACTION_LOG if success else ERROR_LOG # Se decide si es un log de acción exitosa o de error
     
     if success:
-        log_line = f"[{timestamp}] {current_user} -- {command} -- SUCCESS -- {details}\n"
+        log_line = f"[{timestamp}] {current_user} -- {command} -- EXITO -- {details}\n"
     else:
-        log_line = f"[{timestamp}] {current_user} -- {command} -- FAILURE -- {details}\n"
+        log_line = f"[{timestamp}] {current_user} -- {command} -- FRACASO -- {details}\n"
 
     try:
         with open(log_file, "a", encoding="utf-8") as f:

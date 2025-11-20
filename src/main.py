@@ -1,10 +1,14 @@
 import importlib, pkgutil, commands
-from utils import var, parser
+from utils import var, parser, log_gen
 
 # Iterar sobre todos los módulos en el paquete commands, añadir cada comando al diccionario con su función lista para ejecutarse
 for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__): 
     module : object = importlib.import_module(f"commands.{module_name}")
+    
     var.commands_dict[module_name] = module.run
+
+
+log_gen.make_log("Shell iniciada")
 
 while True:
     cmd_input = input(f"{var.current_user} {var.current_dir}> $ ")
@@ -19,4 +23,4 @@ while True:
         var.commands_dict[cmd_name](cmd_args)
     else: 
         print(f"Error: No existe el comando '{cmd_name}'")
-        var.make_log(cmd_name, success=False, details="No existe el comando indicado")
+        log_gen.make_log(cmd_name, success=False, details="No existe el comando indicado")
