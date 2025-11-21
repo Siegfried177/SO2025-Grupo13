@@ -1,5 +1,5 @@
 import importlib, pkgutil, commands
-from utils import var, parser, log_gen
+from utils import curfew_utils, var, parser, log_gen
 
 # Iterar sobre todos los módulos en el paquete commands, añadir cada comando al diccionario con su función lista para ejecutarse
 for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__): 
@@ -7,8 +7,8 @@ for loader, module_name, is_pkg in pkgutil.iter_modules(commands.__path__):
     
     var.commands_dict[module_name] = module.run
 
-
 log_gen.make_log("Shell iniciada")
+curfew_utils.load_restricted_commands()
 
 while True:
     cmd_input = input(f"{var.current_user} {var.current_dir}> $ ")
@@ -19,7 +19,7 @@ while True:
     cmd_name = cmd_parsed[0]
     cmd_args = cmd_parsed[1:]
     
-    if cmd_name in var.commands_dict: # Si el comando es correcto se ejecuta
+    if cmd_name in var.commands_dict and cmd_name not in var.restricted_commands: # Si el comando es correcto se ejecuta
         var.commands_dict[cmd_name](cmd_args)
     else: 
         print(f"Error: No existe el comando '{cmd_name}'")

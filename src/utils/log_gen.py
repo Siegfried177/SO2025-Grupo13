@@ -3,9 +3,9 @@ from datetime import datetime
 from .var import current_user
 
 # Constantes para los directorios y archivos de log
-LOG_DIR = "C:\\aaaaaaaa"
-ACTION_LOG = os.path.join(LOG_DIR, "shell.txt")
-ERROR_LOG = os.path.join(LOG_DIR, "sistema_error.txt")
+LOG_DIR = "C:\\Shell"
+ACTION_LOG = os.path.join(LOG_DIR, "shell.log")
+ERROR_LOG = os.path.join(LOG_DIR, "sistema_error.log")
 
 # Crear directorio de logs si no existe
 if not os.path.exists(LOG_DIR):
