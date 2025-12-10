@@ -69,7 +69,7 @@ def save_restricted_commands() -> None:
     restricted_file = SHELL_DIR / "restricted_cmds.log"
     
     try:
-        with restricted_file.open("r") as f:
+        with restricted_file.open("w") as f:
             for cmd in var.restricted_commands:
                 f.write(cmd + "\n")
     except Exception as e:
