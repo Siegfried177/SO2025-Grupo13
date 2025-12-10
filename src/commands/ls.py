@@ -52,9 +52,9 @@ def run(args : list[str]) -> None:
                 print(t("ls_dir_not_found").format(args[0]))
                 make_log("ls", success=False, details=f" No existe el directorio '{args[0]}'")
         else:
-            list_dir = os.listdir(args[0])
-            list_dir = [item for item in list_dir if not item.startswith('.')]
             try:
+                list_dir = os.listdir(args[0])
+                list_dir = [item for item in list_dir if not item.startswith('.')]
                 for item in list_dir:
                     print(item)
                 make_log("ls")
