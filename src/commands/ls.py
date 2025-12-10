@@ -1,5 +1,6 @@
 import os 
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - ls: Lista archivos y directorios
@@ -10,7 +11,7 @@ from utils.log_gen import make_log
 """
 def run(args : list[str]) -> None:
     if len(args) > 2:  # Demasiados argumentos
-        print("Error: Demasiados argumentos para 'ls'")
+        print(t("ls_too_many_args"))
         make_log("ls", success=False, details="Demasiados argumentos para 'ls'")
         return
     
@@ -32,11 +33,11 @@ def run(args : list[str]) -> None:
                     print(item)
                 make_log("ls")
             except FileNotFoundError:
-                print(f"Error: No existe el directorio '{args[1]}'")
+                print(t("ls_dir_not_found").format(args[1]))
                 make_log("ls", success=False, details=f"No existe el directorio '{args[1]}'")
                 return
         else:
-            print(f"Error: Argumento/s no reconocido/s para 'ls'")
+            print(t("ls_invalid_args"))
             make_log("ls", success=False, details="Argumento/s no reconocido/s para 'ls'")
             return
     
@@ -48,7 +49,7 @@ def run(args : list[str]) -> None:
                     print(item)
                 make_log("ls")
             except FileNotFoundError:
-                print(f"Error: No existe el directorio '{args[0]}'")
+                print(t("ls_dir_not_found").format(args[0]))
                 make_log("ls", success=False, details=f" No existe el directorio '{args[0]}'")
         else:
             list_dir = os.listdir(args[0])
@@ -58,6 +59,6 @@ def run(args : list[str]) -> None:
                     print(item)
                 make_log("ls")
             except FileNotFoundError:
-                print(f"Error: No existe el directorio '{args[0]}'")
+                print(t("ls_dir_not_found").format(args[0]))
                 make_log("ls", success=False, details=f"No existe el directorio '{args[0]}'")
                 return

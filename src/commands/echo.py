@@ -1,4 +1,5 @@
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - echo: Imprime texto en la consola
@@ -24,7 +25,7 @@ def run(args : list[str]) -> None:
         text : str = " ".join(args[:index])
         
         if index + 1 >= len(args): # Si no se especificó el archivo
-            print("Error: No se especificó el archivo para redirigir la salida")
+            print(t("echo_no_file"))
             make_log("echo", success=False, details="No se especificó el archivo para redirigir la salida")
             return
         new_file_name : str = args[index + 1]
@@ -34,7 +35,7 @@ def run(args : list[str]) -> None:
                 f.write(text)
                 make_log("echo", success=True, details=f"Salida redirigida a '{new_file_name}' -- Sobrescribir")
         except Exception as e:
-            print(f"Error: Error al escribir en el archivo '{new_file_name}'")
+            print(t("echo_write_error").format(new_file_name))
             make_log("echo", success=False, details=f"Error al escribir en el archivo '{new_file_name}'")
     
     elif ">>" in args: # Si hay redirección de salida a un archivo (añadir al final)
@@ -43,7 +44,7 @@ def run(args : list[str]) -> None:
         new_file_name : str = args[index + 1]
         
         if index + 1 >= len(args): # Si no se especificó el archivo
-            print("Error: No se especificó el archivo para redirigir la salida")
+            print(t("echo_no_file"))
             make_log("echo", success=False, details="No se especificó el archivo para redirigir la salida")
             return
 
@@ -52,5 +53,5 @@ def run(args : list[str]) -> None:
                 f.write(text)
                 make_log("echo", success=True, details=f"Salida redirigida a '{new_file_name}' -- Añadir al final")
         except Exception as e:
-            print(f"Error: Error al escribir en el archivo '{new_file_name}'")
+            print(t("echo_write_error").format(new_file_name))
             make_log("echo", success=False, details=f"Error al escribir en el archivo '{new_file_name}'")

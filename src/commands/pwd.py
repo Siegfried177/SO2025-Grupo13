@@ -1,5 +1,6 @@
 import os
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - pwd: Muestra el directorio actual
@@ -7,7 +8,7 @@ from utils.log_gen import make_log
 """
 def run(args : list[str]) -> None:
     if len(args) > 0:  # Si se pasan argumentos
-        print("Error: El comando 'pwd' no acepta argumentos")
+        print(t("pwd_no_args"))
         make_log("pwd", success=False, details="El comando 'pwd' no acepta argumentos")
         return
     

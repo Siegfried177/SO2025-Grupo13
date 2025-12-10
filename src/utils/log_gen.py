@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from .var import current_user
+from utils.lang_manager import t
 
 # Constantes para los directorios y archivos de log
 LOG_DIR = "C:\\Shell"
@@ -12,7 +13,8 @@ if not os.path.exists(LOG_DIR):
     try:
         os.makedirs(LOG_DIR)
     except PermissionError:
-        print("Error: No se pudo crear el directorio de logs. Ejecuta como administrador/root.")
+        print(t("log_cannot_create_dir"))  # ← reemplazo
+        
 
 # Función para realizar el logging de acciones y errores
 def make_log(command, success=True, details=""):
@@ -28,4 +30,4 @@ def make_log(command, success=True, details=""):
         with open(log_file, "a", encoding="utf-8") as f:
             f.write(log_line)
     except Exception as e:
-        print(f"Error: No se pudo escribir el log: {e}")
+        print(t("log_cannot_write"))  # ← reemplazo

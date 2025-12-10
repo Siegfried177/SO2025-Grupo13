@@ -1,6 +1,7 @@
 import os
 from utils import var
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - cd: Cambia el directorio actual
@@ -12,7 +13,7 @@ from utils.log_gen import make_log
 """
 def run(args : list[str]) -> None:
     if len(args) > 1:  # Demasiados argumentos
-        print("Error: Demasiados argumentos para 'cd'")
+        print(t("cd_too_many_args"))
         make_log("cd", success=False, details="Demasiados argumentos para 'cd'")
         return
     
@@ -37,10 +38,10 @@ def run(args : list[str]) -> None:
     try:
         os.chdir(os.path.expanduser(args[0]))
     except FileNotFoundError:
-        print(f"Error: El directorio '{args[0]}' no existe")
+        print(t("cd_not_found").format(args[0]))
         make_log("cd", success=False, details=f"El directorio '{args[0]}' no existe")
     except PermissionError:
-        print(f"Error: No tienes permiso para acceder al directorio '{args[0]}'")
+        print(t("cd_no_permission").format(args[0]))
         make_log("cd", success=False, details=f"No tienes permiso para acceder al directorio '{args[0]}'")
     
     var.set_current_dir(os.getcwd())

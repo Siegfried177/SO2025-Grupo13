@@ -1,4 +1,5 @@
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - cat: Muestra el contenido de un archivo
@@ -7,7 +8,7 @@ from utils.log_gen import make_log
 """
 def run(args : list[str]) -> None:
 	if len(args) != 1:
-		print("Error: Debe haber exactamente un argumento")
+		print(t("cat_one_arg"))
 		make_log("cat", success=False, details="Debe haber exactamente un argumento")
 		return
 	
@@ -16,8 +17,8 @@ def run(args : list[str]) -> None:
 			print(f.read())
 		make_log(f"cat {args[0]}")
 	except FileNotFoundError:
-		print(f"Error: El archivo '{args[0]}' no existe")
+		print(t("cat_file_not_found").format(args[0]))
 		make_log(f"cat {args[0]}", success=False, details=f"El archivo '{args[0]}' no existe")
 	except PermissionError:
-		print(f"Error: No tienes permiso para leer el archivo '{args[0]}'")
+		print(t("cat_no_permission").format(args[0]))
 		make_log(f"cat {args[0]}", success=False, details=f"No tienes permiso para leer el archivo '{args[0]}'")

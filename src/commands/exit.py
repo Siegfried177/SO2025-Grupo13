@@ -1,5 +1,6 @@
 import sys
 from utils.log_gen import make_log
+from utils.lang_manager import t
 
 """
 - exit: Termina la ejecución de la Shell
@@ -7,7 +8,7 @@ from utils.log_gen import make_log
 """
 def run(args : list[str]) -> None:
     if len(args) > 0:  # Si se pasan argumentos
-        print("Error: El comando 'exit' no acepta argumentos")
+        print(t("exit_no_args"))
         make_log("exit", success=False, details="El comando 'exit' no acepta argumentos")
         return
     
