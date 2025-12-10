@@ -110,7 +110,7 @@ def run(args : list[str]) -> None:
                 print(t("curf_rmv_not_exists").format(cmd_to_rmv))
                 make_log("curf rmv", success=False, details=f"Comando '{cmd_to_rmv}' no estaba restringido")
                 return
-            if cmd_to_rmv in var.restricted_commands or cmd_to_rmv == "cp":
+            if cmd_to_rmv == "rm" or cmd_to_rmv == "cp":
                 print(t("curf_rmv_forbidden").format(cmd_to_rmv))
                 make_log("curf rmv", success=False, details=f"Comando '{cmd_to_rmv}' no se puede eliminar de la lista de restringidos")
                 return
