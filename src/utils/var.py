@@ -1,10 +1,10 @@
-import os, getpass, platform
+import os, platform, getpass
 from pathlib import Path
 
 if platform.system() == "Linux":
     SHELL_DIR = Path.home() / ".shell_data"
 else:
-    SHELL_DIR = Path("C:\\Shell")
+    SHELL_DIR = Path("C:/Shell")
 
 """
 - set_current_dir: Actualiza el directorio actual y el anterior

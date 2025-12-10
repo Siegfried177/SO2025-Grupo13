@@ -2,16 +2,16 @@ import os
 from datetime import datetime
 from .var import current_user
 from utils.lang_manager import t
+from utils import var
 
 # Constantes para los directorios y archivos de log
-LOG_DIR = "C:\\Shell"
-ACTION_LOG = os.path.join(LOG_DIR, "shell.log")
-ERROR_LOG = os.path.join(LOG_DIR, "sistema_error.log")
+SUCCESS_LOG = os.path.join(var.SHELL_DIR, "shell.log")
+ERROR_LOG = os.path.join(var.SHELL_DIR, "sistema_error.log")
 
 # Crear directorio de logs si no existe
-if not os.path.exists(LOG_DIR):
+if not os.path.exists(var.SHELL_DIR):
     try:
-        os.makedirs(LOG_DIR)
+        os.makedirs(var.SHELL_DIR)
     except PermissionError:
         print(t("log_cannot_create_dir"))  # ← reemplazo
         
@@ -19,7 +19,7 @@ if not os.path.exists(LOG_DIR):
 # Función para realizar el logging de acciones y errores
 def make_log(command, success=True, details=""):
     timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-    log_file = ACTION_LOG if success else ERROR_LOG # Se decide si es un log de acción exitosa o de error
+    log_file = SUCCESS_LOG if success else ERROR_LOG # Se decide si es un log de acción exitosa o de error
     
     if success:
         log_line = f"[{timestamp}] {current_user} -- {command} -- EXITO -- {details}\n"

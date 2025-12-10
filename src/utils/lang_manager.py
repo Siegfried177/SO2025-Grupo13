@@ -11,21 +11,22 @@ LANG_TABLE = {
 - load_lang: Establece el idioma de la shell según el archivo lang.txt
 '''
 def load_lang() -> None:
+    lang_file = SHELL_DIR / "lang.txt"
+    
     try: 
-        with open(f"{SHELL_DIR}\\lang.txt", "r") as f: # Se abre el archivo para saber el estado del toque de queda (on / off)
+        with lang_file.open("r") as f: # Se abre el archivo para saber el estado del toque de queda (on / off)
             lang = f.readline().strip() # Se lee el texto del archivo
-            print(lang)
         if lang in ["es", "en"]:
             var.lang = lang
         else:
             var.lang = "es"  # Idioma español por defecto
-            with open(f"{SHELL_DIR}\\lang.txt", "w") as f: # Se sobreescribe el archivo con el idioma por defecto
+            with lang_file.open("w") as f: # Se sobreescribe el archivo con el idioma por defecto
                 f.write("es\n")  # Idioma español por defecto
     except FileNotFoundError:
-        print(t("lang_file_missing"))
+        print(("Error: El archivo 'lang.txt' no existe, se creará uno con el idioma por defecto") if var.lang == "es" else "Error: 'lang.txt' file is missing, a default one will be created")
         var.lang = "es"  # Idioma español por defecto
         
-        with open(f"{SHELL_DIR}\\lang.txt", "w") as f: # Se crea el archivo con el idioma por defecto
+        with lang_file.open("w") as f: # Se crea el archivo con el idioma por defecto
             f.write("es\n")  # Idioma español por defecto
 
 '''
@@ -34,18 +35,20 @@ def load_lang() -> None:
 '''
 def set_lang(lang : str) -> None:
     var.lang = lang
+    lang_file = SHELL_DIR / "lang.txt"
+    
     try:
-        with open(f"{SHELL_DIR}\\lang.txt", "w") as f:
+        with lang_file.open("w") as f:
             f.write(lang + "\n")
     except Exception as e:
         print(t("lang_save_error"))
     try: 
-        with open(f"{SHELL_DIR}\\lang.txt", "w") as f: 
+        with lang_file.open("w") as f:
             f.write(lang + "\n")
     except FileNotFoundError:
         print(t("lang_file_missing"))
         
-        with open(f"{SHELL_DIR}\\lang.txt", "w") as f: # Se crea el archivo con el idioma por defecto
+        with lang_file.open("w") as f: # Se crea el archivo con el idioma por defecto
             f.write("es\n")  # Idioma español por defecto
 
 '''
