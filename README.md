@@ -10,7 +10,7 @@ Construcción de un sistema Linux mínimo desde cero, siguiendo el manual oficia
 - Estado del Arte: revisión académica de los últimos 10 años sobre LFS y proyectos similares. Incluye tendencias actuales: optimización, control total, personalización y reducción de bloatware.
 - Instalación de LFS: compilación y configuración de un sistema booteable, kernel y GRUB, con documentación de problemas y soluciones.
 - Systemd: verificación como PID 1, gestión de servicios, dependencias, paralelización y logging centralizado con journald.
-- Registro de Proceso: diario en Markdown con sesiones, tareas, comandos, problemas y soluciones.
+- Registro de Proceso: Diario con los problemas y sus soluciones en formato PDF
 
 # TP 2 -- SHELL
 ## Descripción
@@ -19,4 +19,4 @@ Implementación de un Shell básico con comandos propios, control de versiones y
 ## Objetivos
 - Construir un shell con características diferenciales (ej. educativo, de red, seguridad, minimalista, temático)
 - Programar comandos desde cero, sin usar directamente los del sistema
-- Mantener logs y documentación de decisiones, pruebas y problemas
+- Mantener logs y documentación de decisiones, pruebas y problemas. Están en un PDF
