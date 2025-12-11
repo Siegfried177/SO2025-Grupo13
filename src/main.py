@@ -27,7 +27,7 @@ while True:
             log_gen.make_log(cmd_name, success=False, details="Comando restringido durante el toque de queda")
             continue
         
-        if var.input_limit != 0 and len(cmd_input) > var.input_limit: # Si el comando excede el límite de caracteres permitidos (0 = sin limite)
+        if var.input_limit != 0 and len(cmd_input) > var.input_limit and cmd_name != "inputlimit": # Si el comando excede el límite de caracteres permitidos (0 = sin limite)
             print(t("shell_input_limit").format(var.input_limit))
             log_gen.make_log(cmd_name, success=False, details="Límite de caracteres excedido")
             continue
