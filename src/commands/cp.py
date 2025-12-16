@@ -20,6 +20,11 @@ def run(args : list[str]) -> None:
     
     src, dest = args[0], args[1]
 
+    if os.path.isdir(src):
+        print(t("cp_no_directories"))
+        make_log("cp", success=False, details="No se permite copiar directorios")
+        return
+
     if os.path.exists(dest) and is_in_curfew():
         print(t("cp_restricted"))
         make_log("cp", success=False, details="Comando restringido para sobreescribir durante el toque de queda") 

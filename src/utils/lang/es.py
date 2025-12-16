@@ -74,5 +74,7 @@ OUTPUT_TEXT = {
 "chlan_changed_es": "Idioma cambiado a Español",
 "chlan_changed_en": "Idioma cambiado a Inglés",
 "log_cannot_create_dir": "Error: No se pudo crear el directorio de logs. Ejecuta como administrador/root.",
-"log_cannot_write": "Error: No se pudo escribir el log: {}"
+"log_cannot_write": "Error: No se pudo escribir el log: {}",
+"inputlimit_missing_arg": "Error: Falta argumento para 'inputlimit'",
+"cp_no_directories": "Error: No se permite copiar directorios"
 }

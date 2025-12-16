@@ -12,6 +12,11 @@ from utils.lang_manager import t
 -- --help muestra la ayuda del comando
 """
 def run(args : list[str]) -> None:
+    if len(args) == 0:
+        print(t("inputlimit_missing_arg"))
+        make_log("inputlimit", success=False, details="Faltan argumentos")
+        return
+    
     if args[0] == "--help": # Mostrar ayuda del comando
         print(t("inputlimit_help_usage"))
         print(t("inputlimit_help_desc"))
