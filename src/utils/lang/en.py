@@ -76,5 +76,6 @@ OUTPUT_TEXT = {
 "log_cannot_create_dir": "Error: Failed to create the log directory. Run as administrator/root.",
 "log_cannot_write": "Error: Failed to write the log: {}",
 "inputlimit_missing_arg": "Error: Missing argument for 'inputlimit'",
-"cp_no_directories": "Error: Copying directories is not allowed"
+"cp_no_directories": "Error: Copying directories is not allowed",
+"exit_goodbye": "ysh shell successfully closed"
 }

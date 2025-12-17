@@ -76,5 +76,6 @@ OUTPUT_TEXT = {
 "log_cannot_create_dir": "Error: No se pudo crear el directorio de logs. Ejecuta como administrador/root.",
 "log_cannot_write": "Error: No se pudo escribir el log: {}",
 "inputlimit_missing_arg": "Error: Falta argumento para 'inputlimit'",
-"cp_no_directories": "Error: No se permite copiar directorios"
+"cp_no_directories": "Error: No se permite copiar directorios",
+"exit_goodbye": "Shell ysh cerrada exitosamente"
 }

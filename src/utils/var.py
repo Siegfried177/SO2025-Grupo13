@@ -2,7 +2,7 @@ import os, platform, getpass
 from pathlib import Path
 
 if platform.system() == "Linux":
-    SHELL_DIR = Path.home() / ".shell_data"
+    SHELL_DIR = Path("/var/log/shell")
 else:
     SHELL_DIR = Path("C:/Shell")
 

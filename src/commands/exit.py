@@ -13,4 +13,6 @@ def run(args : list[str]) -> None:
         return
     
     make_log("exit")
+    print(t("exit_goodbye"))
+    
     sys.exit(0)
