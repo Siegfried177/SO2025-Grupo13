@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-from .var import current_user
 from utils.lang_manager import t
 from utils import var
 
@@ -22,9 +21,9 @@ def make_log(command, success=True, details=""):
     log_file = SUCCESS_LOG if success else ERROR_LOG # Se decide si es un log de acción exitosa o de error
     
     if success:
-        log_line = f"[{timestamp}] {current_user} -- {command} -- EXITO -- {details}\n"
+        log_line = f"[{timestamp}] {var.current_user} -- {command} -- EXITO -- {details}\n"
     else:
-        log_line = f"[{timestamp}] {current_user} -- {command} -- FRACASO -- {details}\n"
+        log_line = f"[{timestamp}] {var.current_user} -- {command} -- FRACASO -- {details}\n"
 
     try:
         with open(log_file, "a", encoding="utf-8") as f:
